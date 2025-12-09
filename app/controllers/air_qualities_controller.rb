@@ -1,13 +1,26 @@
 class AirQualitiesController < ApplicationController
   def index
-    air_qualities = AirQuality.all
-    render json: air_qualities
+    if params[:device_id].present?
+      data = AirQuality.where(device_id: params[:device_id])
+    else
+      data = AirQuality.all
+    end
+
+    render json: data
   end
 
+
   def create
-    air_quality = AirQuality.create(air_quality_params)
-    render json: air_quality, status: :created
+    air_quality = AirQuality.new(air_quality_params)
+
+    if air_quality.save
+      render json: air_quality, status: :created
+    else
+      render json: { errors: air_quality.errors.full_messages },
+            status: :unprocessable_entity
+    end
   end
+
 
   private
 
@@ -18,7 +31,8 @@ class AirQualitiesController < ApplicationController
       :co2,
       :humidity,
       :battery_level,
-      :measured_at
+      :measured_at,
+      :location
     )
   end
 end

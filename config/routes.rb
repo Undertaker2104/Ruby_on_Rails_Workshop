@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :air_qualities, only: [:index, :create]
+  resources :air_qualities, only: [ :index, :create ]
 end

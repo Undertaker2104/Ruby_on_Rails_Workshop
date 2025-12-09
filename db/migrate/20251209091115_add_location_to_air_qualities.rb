@@ -1,0 +1,5 @@
+class AddLocationToAirQualities < ActiveRecord::Migration[8.0]
+  def change
+    add_column :air_qualities, :location, :string
+  end
+end

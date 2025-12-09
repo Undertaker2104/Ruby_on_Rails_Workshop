@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_09_090353) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_09_091115) do
   create_table "air_qualities", force: :cascade do |t|
     t.string "device_id"
     t.float "pm25"
@@ -20,5 +20,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_09_090353) do
     t.datetime "measured_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
   end
 end
